@@ -45,6 +45,3 @@ Language | Framwork | Database | HTTP | Develop | Tools
 | /posting/ | POST | 게시글 등록하기 | title: string, content: string, password: string | 성공 여부 |
 | /posting/update/ | PUT | 게시글 수정하기 | id: int, title: string, content: string, password: string | 성공 여부 |
 | /posting/delete/ | DELETE | 게시글 삭제하기 | id: int, password: string | 성공 여부 |
-
-
-
