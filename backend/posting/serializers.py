@@ -2,10 +2,16 @@ from rest_framework import serializers
 from .models import Post
 
 
-class PostSerializer(serializers.ModelSerializer):
+class PostCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ["title", "content", "password"]
+
+
+class PostReadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ["title", "content"]
 
 
 class PostUpdateSerializer(serializers.ModelSerializer):

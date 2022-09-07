@@ -9,7 +9,11 @@ from django.core.paginator import Paginator, EmptyPage
 from .models import Post
 
 
-from .serializers import PostSerializer, PostUpdateSerializer
+from .serializers import (
+    PostCreateSerializer,
+    PostUpdateSerializer,
+    PostReadSerializer,
+)
 
 
 class PostView(APIView):
@@ -27,7 +31,7 @@ class PostView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        serializer = PostSerializer(page_obj, many=True)
+        serializer = PostReadSerializer(page_obj, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -53,7 +57,7 @@ class PostView(APIView):
         decoded_password = hashed_password.decode("utf-8")
         data["password"] = decoded_password
 
-        serializer = PostSerializer(data=data)
+        serializer = PostCreateSerializer(data=data)
 
         if serializer.is_valid():
             serializer.save()
